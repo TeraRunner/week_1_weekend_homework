@@ -1,23 +1,33 @@
-def pet_shop_name(shop_name)
-  return @pet_shop[:name]
+def pet_shop_name(shop)
+  return shop[:name]
 end
 
-def total_cash(shop_name)
-  return @pet_shop[:admin][:total_cash]
+def total_cash(shop)
+  return shop[:admin][:total_cash]
 end
 
-def add_or_remove_cash(shop_name, money)
-  return @pet_shop[:admin][:total_cash] += money
+def add_or_remove_cash(shop, money)
+  return shop[:admin][:total_cash] += money
 end
 
-def pets_sold(shop_name)
-  return @pet_shop[:admin][:pets_sold]
+def pets_sold(shop)
+  return shop[:admin][:pets_sold]
 end
 
-def increase_pets_sold(shop_name, increment)
-  @pet_shop[:admin][:pets_sold] += increment
+def increase_pets_sold(shop, increment)
+  shop[:admin][:pets_sold] += increment
 end
 
-def stock_count(shop_name)
-  return @pet_shop[:pets].length
+def stock_count(shop)
+  return shop[:pets].length
+end
+
+def pets_by_breed(shop, specie_name)
+  pets = []
+  for pet in shop[:pets]
+    if pet[:breed] == specie_name
+      pets.push(pet)
+    end
+  end
+  return pets
 end
