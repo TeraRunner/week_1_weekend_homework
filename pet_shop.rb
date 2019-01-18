@@ -13,3 +13,7 @@ end
 def pets_sold(shop_name)
   return @pet_shop[:admin][:pets_sold]
 end
+
+def increase_pets_sold(shop_name, increment)
+  @pet_shop[:admin][:pets_sold] += increment
+end
