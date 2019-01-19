@@ -72,5 +72,7 @@ end
 def customer_can_afford_pet(customer, pet)
   if customer[:cash] < pet[:price]
     return false
+  else
+    return true
   end
 end
