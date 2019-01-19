@@ -76,3 +76,10 @@ def customer_can_afford_pet(customer, pet)
     return true
   end
 end
+
+def sell_pet_to_customer(shop, pet, customer)
+    add_pet_to_customer(customer, pet)
+    shop[:admin][:pets_sold] += 1
+    customer[:cash] -= pet[:price]
+    shop[:admin][:total_cash] += pet[:price]
+end
