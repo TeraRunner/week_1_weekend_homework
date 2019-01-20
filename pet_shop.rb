@@ -32,19 +32,19 @@ def pets_by_breed(shop, specie_name)
   return pets
 end
 
-def find_pet_by_name(shop, pet_name)
-  for pet in shop[:pets]
-    if pet[:name] == pet_name
-      return pet
+def find_pet_by_name(shop, pet)
+  for pet_name in shop[:pets]
+    if pet_name[:name] == pet
+      return pet_name
     end
   end
   return nil
 end
 
-def remove_pet_by_name(shop, pet_name)
-  for pet in shop[:pets]
-    if pet[:name] == pet_name
-      shop[:pets].delete(pet)
+def remove_pet_by_name(shop, pet)
+  for pet_name in shop[:pets]
+    if pet_name[:name] == pet
+      shop[:pets].delete(pet_name)
     end
   end
 end
@@ -78,8 +78,10 @@ def customer_can_afford_pet(customer, pet)
 end
 
 def sell_pet_to_customer(shop, pet, customer)
+  if pet != nil && customer_can_afford_pet(customer, pet)
     add_pet_to_customer(customer, pet)
     shop[:admin][:pets_sold] += 1
     customer[:cash] -= pet[:price]
     shop[:admin][:total_cash] += pet[:price]
+  end
 end
